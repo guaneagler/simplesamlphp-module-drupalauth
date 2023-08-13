@@ -24,6 +24,7 @@ class DrupalHelper
         chdir($drupalRoot);
         $kernel = DrupalKernel::createFromRequest($request, $autoloader, 'prod', true, $drupalRoot);
         $kernel->boot();
+        $kernel->preHandle($request);
         $kernel->loadLegacyIncludes();
         chdir($originalDir);
     }
